@@ -29,6 +29,9 @@ logger.log(`\tExpressJS instance created`);	// test
 app.use(express.static(settings.root));
 app.use(express.static(settings.root + "/css"));	// location of css files
 app.use(express.static(settings.root + "/js"));		// location of js files
+app.use(express.static(settings.root + "/app243/css"));	// location of app243 css
+app.use(express.static(settings.root + "/app243/js"));	// location of app243 js
+app.use(express.static(settings.root + "/app243/img"));	// location of app243 img
 logger.log(`\tStatic asset locations recorded...`);	// test
 
 /* Define Routes (RESTful)
@@ -40,6 +43,7 @@ logger.log(`\tStatic asset locations recorded...`);	// test
 */
 app.get("/", handles.rootHandler);				// GET request of the main login page
 app.post("/login", handles.loginHandler);		// POST request: RESTful login
+app.get("/app243", handles.app243Handler);		// CMPE 243 App Portal
 logger.log(`\tServer endpoints routed...`);	// test
 
 

@@ -14,6 +14,7 @@
 "use strict"
 
 var settings = require("./settings");
+var logger = require("./logger");
 
 // Containers
 var handle_map = {};		// A map of all endpoint handlers
@@ -81,6 +82,31 @@ handle_map.loginHandler = function (request, response) {			// POST request: REST
 		}
 	});
 };
+
+/*
+	@function 	app243Handler
+	@parameter	request - the web request object provided by express.js
+	@parameter	response - the web response object provided by express.js
+	@returns	n/a
+	@details 	This function handles app243 endpoint requests (i.e. for app). Used on a GET request
+*/
+handle_map.app243Handler = function (request, response) {
+	console.log(`CMPE 243 app request ${request.params.id} from ${request.ip}`);
+	logger.log(`CMPE 243 app request ${request.params.id} from ${request.ip}`);
+	response.set("Content-Type", "text/javascript");
+	response.sendFile("app243/index.html", options, function (error) {
+		if (error) {
+			console.log(error);
+			logger.log(error);
+			response.status(500).end();
+			throw error;
+		} else {
+			console.log(`Granted app243 access for client on ${settings.port}`);
+			logger.log(`Granted app243 access for client on ${settings.port}`);
+			response.end();
+		}
+	});
+}
 /* END Handler Functions */
 
 

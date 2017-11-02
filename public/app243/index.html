@@ -1,0 +1,101 @@
+<!--
+	PROJECT: 		Vindicator
+	Name: 			Rolando Javier
+	File: 			index.html
+	Date Created: 	October 31, 2017
+	Last Modified: 	November 1, 2017
+	Details:
+		This file serves as the manual control portal for the Vindicator project (rj_personal branch of Project_MEANskills)
+-->
+<!DOCTYPE html>
+<html lang="en">
+<!-- BEGIN header -->
+<head>
+	<!-- Metadata -->
+	<meta charset="UTF-8">
+	<meta name="description" content="app243: This page is the CMPE 243 App Portal for the Vindicator Monitor System">
+	<meta name="keywords" content="MEAN server Vindicators100 CMPE 243">
+	<meta name="author" content="R. Javier">
+	<meta name="last-modified" content="October 31, 2017">
+
+	<!-- Tab Title -->
+	<title>Vindicator</title>
+
+	<!-- Standard Includes -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="css/index.css">
+</head>
+<!-- END header -->
+
+<!-- BEGIN body -->
+<body>
+	<!-- BEGIN navigation -->
+	<div class="navbar navbar-default">
+		<div class="container-fluid">
+			<!-- ? -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#modeSwitchNavbar" aria-expanded="false">
+					<span class="sr-only">Blah</span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">Vindicator</a>
+			</div>
+
+			<!-- Group toggling elements together -->
+			<div class="collapse navbar-collapse" id="modeSwitchNavbar">
+				<ul class="nav navbar-nav">
+					<li id="rawMode" class="modeSelector active"><a href="#">Raw</a></li>
+					<li id="mapMode" class="modeSelector"><a href="#">Map</a></li>
+					<li id="monitorMode" class="modeSelector"><a href="#">Monitor</a></li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Options <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li id="intervalToggle"><a href="#">Toggle Interval</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- END navigation -->
+	
+	<!-- BEGIN main content -->
+	<div class="container-fluid">
+		<div class="row" id="rawModeView">
+			<!-- <div class="jumbotron"> -->
+				<div class="col-md-3"></div>
+				<div class="col-md-6">
+					<div class="container-fluid">
+						<!-- BEGIN Main Console -->
+						<div class="row consoleMain">
+							<textarea id="consoleMain" class="consoleMain centerObject" rows="20" cols="80" readonly></textarea>
+						</div>
+						<!-- END Main Console -->
+
+						<!-- BEGIN Main Command Line -->
+						<div class="row">
+							<div class="consoleMain centerObject input-group">
+								<span class="input-group-addon">user@vindicator:~$</span>
+								<input id="consoleCmdLine" class="full-wide" type="text" placeholder="Enter Command Here...">
+							</div>
+						</div>
+						<!-- END Main Command Line -->
+					</div>
+				</div>
+				<div class="col-md-3"></div>
+			<!-- </div> -->
+		</div>
+	</div>
+	<!-- END main content -->
+</body>
+<!-- END body -->
+
+<!-- BEGIN footer -->
+<footer>
+	<script type="text/javascript" src="js/lib/utility.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
+</footer>
+<!-- END footer -->
+</html>
