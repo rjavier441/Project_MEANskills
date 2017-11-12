@@ -64,4 +64,7 @@ package-lock.json
 # Ignore all server log files in the log directory
 log/*
 
+# **** PROJECT: Vindicator Custom ignore options ****
+# Ignore the googlemaps api key I placed
+googs/*
 

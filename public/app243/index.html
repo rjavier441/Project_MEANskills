@@ -64,28 +64,30 @@
 	<!-- BEGIN main content -->
 	<div class="container-fluid">
 		<div class="row" id="rawModeView">
-			<!-- <div class="jumbotron"> -->
-				<div class="col-xs-3"></div>
-				<div class="col-xs-6">
-					<div class="container-fluid">
-						<!-- BEGIN Main Console -->
-						<div class="row consoleMain">
-							<textarea id="consoleMain" class="consoleMain centerObject" rows="20" cols="80" readonly></textarea>
-						</div>
-						<!-- END Main Console -->
-
-						<!-- BEGIN Main Command Line -->
-						<div class="row">
-							<div class="consoleMain centerObject input-group">
-								<span class="input-group-addon">user@vindicator:~$</span>
-								<input id="consoleCmdLine" class="full-wide" type="text" placeholder="Enter Command Here...">
-							</div>
-						</div>
-						<!-- END Main Command Line -->
+			<div class="col-xs-12">
+				<div class="container-fluid">
+					<!-- BEGIN Main Console -->
+					<div class="row consoleMain">
+						<textarea id="consoleMain" class="consoleMain centerObject" rows="20" cols="80" readonly></textarea>
 					</div>
+					<!-- END Main Console -->
+
+					<!-- BEGIN Main Command Line -->
+					<div class="row">
+						<div class="consoleMain centerObject input-group">
+							<span class="input-group-addon">user@vindicator:~$</span>
+							<input id="consoleCmdLine" class="full-wide" type="text" placeholder="Enter Command Here...">
+						</div>
+					</div>
+					<!-- END Main Command Line -->
 				</div>
-				<div class="col-xs-3"></div>
-			<!-- </div> -->
+			</div>
+		</div>
+		<div class="row" id="mapModeView">
+			<div class="col-xs-12">
+				<!-- <p>HI DUDE</p> -->
+				<div id="googleMap" class="gmap"></div>
+			</div>
 		</div>
 	</div>
 	<!-- END main content -->
@@ -96,6 +98,9 @@
 <footer>
 	<script type="text/javascript" src="js/lib/utility.js"></script>
 	<script type="text/javascript" src="js/index.js"></script>
+
+	<!-- Google Map API Initializer -->
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAzMbrSNAa3uG2_xpghnrgfCiOjDl0jNw4&callback=googleMapInit"></script>
 </footer>
 <!-- END footer -->
 </html>

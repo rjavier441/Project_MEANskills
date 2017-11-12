@@ -4,6 +4,7 @@ body {
 	background-size: cover;
 }
 
+/* Generic Classes */
 .centerObject {
 	margin: 0;
 	vertical-align: middle;
@@ -15,6 +16,7 @@ body {
 	width: 100%;
 }
 
+/* Class consoleMain */
 div.consoleMain {
 	padding-top: 10px;
 	padding-bottom: 10px;
@@ -30,6 +32,14 @@ input.consoleMain {
 	padding: 10px;
 }
 
+/* Class commamndLine */
 input.commandLine {
 
+}
+
+/* Google Map Classes */
+.gmap {
+	height: 400px;
+	width: 400px;
+	background-color: gray;
 }

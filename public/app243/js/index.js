@@ -31,6 +31,10 @@ function init () {
 	setDebug(true);
 	console.log("Vindicator Initialized");
 
+	// Start at raw mode view
+	$("#rawModeView").attr("hidden", false);
+	$("#mapModeView").attr("hidden", true);
+
 	testIntervalControlInit();
 	modeSwitchInit();
 
@@ -46,12 +50,49 @@ function init () {
 	@details 		This function adds a callback to the "click" event of the navbar's mode selection buttons
 */
 function modeSwitchInit () {
-	// Removes class "active" from all nav elements with class "modeSelector"
+	// Removes class "active" from all nav elements with class "modeSelector" whenever modeSelector is clicked
 	$(".modeSelector").on("click", function (){
 		$(".modeSelector").removeClass("active");
 		$(this).addClass("active");
-		cliLog(`${$(this).attr("id")} is now active`);
+		// cliLog(`${$(this).attr("id")} is now active`);	// debug
+
+		// Switch section
+		var section = $(this).attr("id");
+		console.log(section);	// debug
+		switch (section) {
+			case "rawMode": {	// switch to raw data view
+				$("#rawModeView").attr("hidden", false);
+				$("#mapModeView").attr("hidden", true);
+				break;
+			}
+			case "mapMode": {
+				$("#rawModeView").attr("hidden", true);
+				$("#mapModeView").attr("hidden", false);
+				break;
+			}
+			default: {
+				console.log(`Error: Uncrecognized mode view id "${section}"`);
+			}
+		}
 	});
+}
+
+/*
+	@function 		googleMapInit
+	@parameter		n/a
+	@returns		n/a
+	@details 		This function initializes the google map in the webpage using my API key
+*/
+function googleMapInit () {
+	var sjsu = {lat: 37.335, lng: -121.881};	// Lat: {N > 0, S < 0; E > 0 W < 0}
+    var map = new google.maps.Map(document.getElementById('googleMap'), {
+      zoom: 4,
+      center: sjsu
+    });
+    var marker = new google.maps.Marker({
+      position: sjsu,
+      map: map
+    });
 }
 
 /*
