@@ -96,8 +96,10 @@ function googleMapInit () {
 
     // If browser is on a mobile device, adjust map dimensions accordingly...
     if (isMobile()) {
+	cliLog("Applying browser settings for mobile");
     	$("#googleMap").removeClass("gmapNonMobile").addClass("gmapMobile");
     } else {
+	cliLog("Applying browser settings for non-mobile");
     	$("#googleMap").removeClass("gmapMobile").addClass("gmapNonMobile");
     }
 }
