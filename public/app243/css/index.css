@@ -38,8 +38,13 @@ input.commandLine {
 }
 
 /* Google Map Classes */
-.gmap {
-	height: 400px;
-	width: 400px;
+.gmapMobile {
+	height: 100%;
+	width: 100%;
 	background-color: gray;
+}
+.gmapNonMobile {
+	height: 600px;
+	width: 800px;
+	background-color: gray;	
 }

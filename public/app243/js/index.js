@@ -93,6 +93,13 @@ function googleMapInit () {
       position: sjsu,
       map: map
     });
+
+    // If browser is on a mobile device, adjust map dimensions accordingly...
+    if (isMobile()) {
+    	$("#googleMap").removeClass("gmapNonMobile").addClass("gmapMobile");
+    } else {
+    	$("#googleMap").removeClass("gmapMobile").addClass("gmapNonMobile");
+    }
 }
 
 /*
@@ -123,6 +130,24 @@ function testIntervalControlInit () {
 
 
 // Utility Methods
+/*
+	@function		isMobile
+	@parameter		n/a
+	@returns		True if the detected browser is from a mobile phone device; False otherwise
+	@details 		This function determines which type of browser is being used (i.e. a Personal Computer type or a Mobile Phone Type). This becomes especially useful when deciding how to layout the Google Map Window, among other things.
+*/
+function isMobile () {
+	var mobile = false;
+	var userAgent = navigator.userAgent;
+
+	// If the user agent string contains any reference to iPhone or Android, the browser is most likely operating from a mobile device
+	if (userAgent.indexOf("iPhone") !== -1 || userAgent.indexOf("Android") !== -1) {
+		mobile = true;
+	}
+
+	return mobile;
+}
+
 /*
 	@function		cliLog
 	@parameter		msg - the string to log to the "consoleMain" virtual command line
