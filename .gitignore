@@ -66,5 +66,5 @@ log/*
 
 # **** PROJECT: Vindicator Custom ignore options ****
 # Ignore the googlemaps api key I placed
-googs/*
+public/app243/googs/*
 
