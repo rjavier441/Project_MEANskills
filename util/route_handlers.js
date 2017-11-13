@@ -43,7 +43,7 @@ mongo.connect("mongodb://localhost:27017/testdb", function (err, db) {
 	// Log connection status, and error (if any)
 	if (err) {
 		logger.log("Could not connect to Mongo:\n" + err);
-		assert.equal(err, null);	// will throw error if not null
+//		assert.equal(err, null);	// will throw error if not null
 	} else {
 		logger.log("Connected to Mongo");
 

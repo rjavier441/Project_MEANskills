@@ -98,8 +98,27 @@ function googleMapInit () {
 
     // If browser is on a mobile device, adjust map dimensions accordingly...
     if (isMobile()) {
+	var phoneName = "unknown";
+
 	cliLog("Applying browser settings for mobile");
-    	$("#googleMap").removeClass("gmapNonMobile").addClass("gmapMobile");
+
+	// Determine device scales
+	if (navigator.userAgent.indexOf("SM-N950U")) {
+		phoneName = "Note8";
+	}
+
+	switch (phoneName) {
+		case "Note8" : {
+			cliLog("Configuring UI for Note 8");
+			$("#googleMap").removeClass("gmapNonMobile").addClass("gmapMobile");
+			break;
+		}
+		// If the device is not recognized, use PC browser settings
+		default: {
+			cliLog("Error: I don't know this device");
+			break;
+		}
+	}
     } else {
 	cliLog("Applying browser settings for non-mobile");
     	$("#googleMap").removeClass("gmapMobile").addClass("gmapNonMobile");
@@ -148,6 +167,8 @@ function isMobile () {
 	if (userAgent.indexOf("iPhone") !== -1 || userAgent.indexOf("Android") !== -1) {
 		mobile = true;
 	}
+
+	cliLog("userAgent: " + userAgent);
 
 	return mobile;
 }
