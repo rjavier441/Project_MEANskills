@@ -1,7 +1,15 @@
+html {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
 body {
 	/*background: url("../img/Fondo_negro_con_circulitos.jpg") no-repeat center center fixed;*/
 	background-color: black;
 	background-size: cover;
+	height: 100%;
+	margin: 0;
+	padding: 0;
 }
 
 /* Generic Classes */
@@ -45,6 +53,6 @@ input.commandLine {
 }
 .gmapNonMobile {
 	height: 600px;
-	width: 800px;
+	width: 100%;
 	background-color: gray;	
 }

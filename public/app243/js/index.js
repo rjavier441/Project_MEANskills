@@ -68,6 +68,7 @@ function modeSwitchInit () {
 			case "mapMode": {
 				$("#rawModeView").attr("hidden", true);
 				$("#mapModeView").attr("hidden", false);
+				googleMapInit();
 				break;
 			}
 			default: {
@@ -84,11 +85,12 @@ function modeSwitchInit () {
 	@details 		This function initializes the google map in the webpage using my API key
 */
 function googleMapInit () {
-	var sjsu = {lat: 37.335, lng: -121.881};	// Lat: {N > 0, S < 0; E > 0 W < 0}
-    var map = new google.maps.Map(document.getElementById('googleMap'), {
-      zoom: 4,
+	var sjsu = new google.maps.LatLng(37.335, -121.881);	// Lat: {N > 0, S < 0; E > 0 W < 0}
+	var mapSettings = {
+      zoom: 17,
       center: sjsu
-    });
+    };
+    var map = new google.maps.Map(document.getElementById('googleMap'), mapSettings);
     var marker = new google.maps.Marker({
       position: sjsu,
       map: map
