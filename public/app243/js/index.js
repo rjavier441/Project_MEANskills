@@ -126,6 +126,20 @@ function googleMapInit () {
 }
 
 /*
+	@function		setDestination
+	@parameter		map - the google.maps.Map object provided by the Google Maps API
+	@parameter		coord - the coordinate of the click (can be acquired from the event thrown by the Google Maps API when a user clicks on the Map)
+	@returns		n/a
+	@details 		This function is intended for use as a listener to the Google Maps google.maps.Map "click" event, and adds a marker to the destination
+*/
+function setDestination (map, coord) {
+	var destMarker = new google.maps.Marker({
+		position: coord,
+		map: map
+	});
+}
+
+/*
 	@function		testIntervalControlInit
 	@parameter		n/a
 	@returns		n/a
