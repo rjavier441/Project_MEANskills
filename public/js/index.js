@@ -3,7 +3,6 @@
 $(document).ready(init());
 
 console.log("Welcome to the login portal");
-doThing();
 
 function init () {
 	setDebug(true);
@@ -11,6 +10,7 @@ function init () {
 		var enterPressed = pressingKey(KEY_ENTER, event);	// checks for enter key press
 		if (enterPressed) {
 			console.log("pressed ENTER");
+			//User info in post currently has placeholder values.
 			post("login", {
 				"name": "hello",
 				"password": "world"
