@@ -1,0 +1,16 @@
+#container {
+	display: flex;
+	flex-direction: column;
+}
+
+#login_input {
+	align-self: center;
+}
+
+#login_input input {
+	width: 100%;
+}
+
+#login_input button {
+	width: 49.3%;
+}

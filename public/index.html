@@ -8,7 +8,7 @@
 		This file serves as a test login page for the MEANserver project
 -->
 <!DOCTYPE html>
-<html lang="en">
+<html ng-app="app" lang="en">
 <!-- BEGIN header -->
 <head>
 	<!-- Metadata -->
@@ -28,6 +28,7 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="css/main.css">
 
+
 	<!-- Used for livereloaing page using Grunt -->
 	<script src="//localhost:35729/livereload.js"></script>
 </head>
@@ -36,21 +37,27 @@
 <!-- BEGIN body -->
 <body>
 	
-<div ng-app="">
-	<h1>Login</h1>
-	<p> Name: <input type="text" ng-model="name" placeholder="Enter name here">
-	</p>
-	<p ng-bind="name"></p>
-
+<div ng-controller="login_page" id="container">
+	<div id="login_input">
+		<form>
+			<input type="text" ng-model="user.name" placeholder="Username">
+			<br>
+			<input type="password" ng-model="user.password" placeholder="Password">	
+			<button type="button" ng-click="createAccount()" class="btn btn-primary" ng->
+				<span class="glyphicon glyphicon-user"></span> New User
+			</button>
+			<button type="button" ng-click="login(user)" class="btn btn-default">
+				<span class="glyphicon glyphicon glyphicon-arrow-right"></span> Login
+			</button>
+		</form>
+	</div>
 </div>
 
 </body>
-<!-- END body -->
 
-<!-- BEGIN footer -->
 <footer>
 	<script type="text/javascript" src="js/lib/utility.js"></script>
 	<script type="text/javascript" src="js/index.js"></script>
 </footer>
-<!-- END footer -->
+
 </html>
