@@ -1,24 +1,32 @@
-"use strict"
+var angular = require('angular')
 
-$(document).ready(init());
+$(document).ready(() => {
+	login_page.init()
+});
 
-console.log("Welcome to the login portal");
+var login_page = {
+	settings: {
+		app: angular.module('myApp', [])
+	}, 
 
-function init () {
-	setDebug(true);
-	$(document).off("keyup").on("keyup", function (event) {
-		var enterPressed = pressingKey(KEY_ENTER, event);	// checks for enter key press
-		if (enterPressed) {
-			console.log("pressed ENTER");
-			//User info in post currently has placeholder values.
-			post("login", {
-				"name": "hello",
-				"password": "world"
-			}, function (data,status,xhr) {
-				console.log(data);
-				console.log(status);
-				console.log(xhr);
-			});
-		}
-	});
+	init: function() {
+		setDebug(true);
+		$(document).off("keyup").on("keyup", function (event) {
+			var enterPressed = pressingKey(KEY_ENTER, event);	// checks for enter key press
+			if (enterPressed) {
+				console.log("pressed ENTER");
+				//User info in post currently has placeholder values.
+				post("login", {
+					"name": "hello",
+					"password": "world"
+				}, function (data,status,xhr) {
+					console.log(data);
+					console.log(status);
+					console.log(xhr);
+				});
+			}
+		});
+	},
 }
+
+	
