@@ -38,7 +38,14 @@
 <body>
 	
 <div ng-controller="login_page" id="container">
+	<div class="jumbotron jumbotron-fluid">
+		<div class="container">
+			<h1 class="display-3">SkillMatch</h1>
+			<p class="lead">Connect. Collaborate. Create.</p>
+		</div>
+	</div>
 	<div id="login_input">
+		<h2>Login</h2>
 		<form>
 			<input type="text" ng-model="user.name" placeholder="Username">
 			<br>
@@ -47,9 +54,24 @@
 				<span class="glyphicon glyphicon-user"></span> New User
 			</button>
 			<button type="button" ng-click="login(user)" class="btn btn-default">
-				<span class="glyphicon glyphicon glyphicon-arrow-right"></span> Login
+				<span class="glyphicon glyphicon glyphicon-arrow-right"></span> Submit
 			</button>
 		</form>
+	</div>
+	<br>
+	<div id="about">
+		<div class="panel">
+			<h1>What is Skillmatch?</h1>
+			<p>SkillMatch is a collaboration tool that connects you to developers with the skills you need for any given project. Simply enter the technical skills you require and SkillMatch finds you people the right people for the job.</p>	
+		</div>
+		<div class="panel">
+			<h1>Advanced Algorithms</h1>
+			<p>SkillMatch uses the most advanced algorithms taught in CMPE130 to provide you with the most optimal results. This website implements hashing, sorting, and graph theory.</p>
+		</div>
+		<div class="panel">
+			<h1>About this Group</h1>
+			<p>This project was created by Rolando Javier, Pranav Patil, and Aris Koumis for the CMPE 130 Group Project.</p>
+		</div>
 	</div>
 </div>
 

@@ -14,3 +14,19 @@
 #login_input button {
 	width: 49.3%;
 }
+
+.jumbotron {
+	background-color: blue;
+	color: white
+}
+
+#about {
+	display: flex;
+}
+
+.panel {
+	flex-direction: column;
+	flex: 1;
+	margin-left: 1px;
+	margin-right: 1px;
+}
