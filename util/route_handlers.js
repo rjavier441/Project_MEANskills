@@ -50,6 +50,26 @@ mongo.connect("mongodb://localhost:27017/testdb", function (err, db) {
 		// First, acquire link to database
 		database = db;
 
+		//Verify necessary collections are present. If not, create them
+		findCollections(null, function(error, list) {
+			var users_collection_present = false
+			var serverStarts_collection_present = false
+			for (var i=0; i<list.length; i++) { 
+				if (list[i].name == "users") {
+					users_collection_present = true;
+				}
+				if (list[i].name == "serverStarts") {
+					serverStarts_collection_present = true;
+				}
+			}
+			if (!users_collection_present) {
+				db.createCollection('users')
+			}
+			if (!serverStarts_collection_present) {
+				db.createCollection('serverStarts')
+			}
+		})
+
 		// Then, write server connection information
 		var postmark = logger.log("Database connection established");
 		insertDoc("serverStarts", {"login": postmark}, function (error, result) {

@@ -53,12 +53,12 @@
 				<div class="modal-body">
 					<form>
 						<div class="form-group">
-							<label for="recipient-name" class="form-control-label">Username:</label>
+							<label ng-model="new_user.username" class="form-control-label">Username:</label>
 							<input type="text" class="form-control" id="recipient-name">
 						</div>
 						<div class="form-group">
 							<label for="message-text" class="form-control-label">Password:</label>
-							<input type="password" class="form-control" id="recipient-name">
+							<input type="password" ng-model="new_user.password" class="form-control" id="recipient-name">
 						</div>
 						<div class="dropdown" id="classes_dropdown">
 							<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Classes Taken
@@ -110,7 +110,7 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary">Submit</button>
+					<button type="button" ng-click="createAccount()" class="btn btn-primary">Submit</button>
 				</div>
 			</div>
 		</div>
@@ -127,7 +127,7 @@
 			<input type="text" ng-model="user.name" placeholder="Username">
 			<br>
 			<input type="password" ng-model="user.password" placeholder="Password">	
-			<button type="button" ng-click="createAccount()" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
 				<span class="glyphicon glyphicon-user"></span> New User
 			</button>
 			<button type="button" ng-click="login(user)" class="btn btn-default">

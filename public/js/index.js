@@ -4,38 +4,38 @@
 		$scope.classes = [];
 		$scope.skills = []
 		$scope.login = function(user) {
-			// $.ajax({
-			// 	url:"/login",
-			// 	method:"POST", 
-			// 	data: {
-			// 		username: user.name,
-			// 		password: user.password
-			// 	},
-			// 	success: function(response) {
-			// 		console.log(response)
-			// 		console.log(`user ${user.name} succesfully logged in`)
-			// 	},
-			// 	error: function() {
-			// 		console.log('uh oh')
-			// 	}
-			// })
+			$.ajax({
+				url:"/login",
+				method:"POST", 
+				data: {
+					username: user.name,
+					password: user.password
+				},
+				success: function(response) {
+					console.log(response)
+					console.log(`user ${user.name} succesfully logged in`)
+				},
+				error: function() {
+					console.log('uh oh')
+				}
+			})
 		}
 
-		$scope.createAccount = function() {
-			// $.ajax({
-			// 	url:"/writeNewDoc",
-			// 	method:"POST", 
-			// 	data: {
-			// 		collection: 'hey'
-			// 	},
-			// 	success: function(response) {
-			// 		console.log(response)
-			// 		console.log(`user ${user.name} succesfully logged in`)
-			// 	},
-			// 	error: function(err) {
-			// 		console.log(err.responseText)
-			// 	}
-			// })
+		$scope.createAccount = function(user) {
+			$.ajax({
+				url:"/writeNewDoc",
+				method:"POST", 
+				data: {
+					collection: 'hey'
+				},
+				success: function(response) {
+					console.log(response)
+					console.log(`user ${user.name} succesfully logged in`)
+				},
+				error: function(err) {
+					console.log(err.responseText)
+				}
+			})
 		}
 
 		$('#classes_dropdown li a').on('click', function(){
