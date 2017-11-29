@@ -26,6 +26,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-animate.js"></script>	
 	<link rel="stylesheet" href="css/main.css">
 
 
@@ -38,6 +39,82 @@
 <body>
 	
 <div ng-controller="login_page" id="container">
+	<div id="myModal" class="modal fade">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<div id="inline_top">
+						<h5 class="modal-title">New User </h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>	
+					</div>
+				</div>
+				<div class="modal-body">
+					<form>
+						<div class="form-group">
+							<label for="recipient-name" class="form-control-label">Username:</label>
+							<input type="text" class="form-control" id="recipient-name">
+						</div>
+						<div class="form-group">
+							<label for="message-text" class="form-control-label">Password:</label>
+							<input type="password" class="form-control" id="recipient-name">
+						</div>
+						<div class="dropdown" id="classes_dropdown">
+							<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Classes Taken
+							<span class="caret"></span></button>
+							<ul class="dropdown-menu">
+								<li> <a href="#">EE97/EE98</a> </li>
+								<li> <a href="#">CMPE30</a> </li>
+								<li> <a href="#">CMPE50</a> </li>
+								<li> <a href="#">CMPE102</a> </li>
+								<li> <a href="#">CMPE110</a> </li>
+								<li> <a href="#">CMPE124</a> </li>
+								<li> <a href="#">CMPE125</a> </li>
+								<li> <a href="#">CMPE126</a> </li>
+								<li> <a href="#">CMPE130</a> </li>
+								<li> <a href="#">CMPE131</a> </li>
+								<li> <a href="#">CMPE140</a> </li>
+								<li> <a href="#">CMPE142</a> </li>
+								<li> <a href="#">CMPE148</a> </li>
+								<li> <a href="#">CMPE195A</a> </li>
+								<li> <a href="#">CMPE195B</a> </li>
+							</ul>
+							| <span ng-repeat="x in classes"> <a ng-click="removeClass()" href="#"> {{x}} </a> |</span>	
+						</div>
+						<br>
+						<div class="dropdown" id="skills_dropdown">
+							<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Skills 
+							<span class="caret"></span></button>
+							<ul class="dropdown-menu">
+								<li> <a href="#">Javascript</a> </li> 
+								<li> <a href="#">Java</a> </li> 
+								<li> <a href="#">C++</a> </li> 
+								<li> <a href="#">Python</a> </li> 
+								<li> <a href="#">Git</a> </li> 
+								<li> <a href="#">Agile Development</a> </li> 
+								<li> <a href="#">React</a> </li> 
+								<li> <a href="#">Angular</a> </li> 
+								<li> <a href="#">Node</a> </li> 
+								<li> <a href="#">Shell Scripting</a> </li> 
+								<li> <a href="#">Computer Vision</a> </li> 
+								<li> <a href="#">Ruby</a> </li> 
+								<li> <a href="#">Perl</a> </li> 
+								<li> <a href="#">PHP</a> </li> 
+								<li> <a href="#">Computer Networking</a> </li> 
+							</ul>
+							| <span ng-repeat="x in skills"> <a ng-click="removeSkill()" href="#"> {{x}} </a> |</span>	
+						</div>
+						
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary">Submit</button>
+				</div>
+			</div>
+		</div>
+	</div>
 	<div class="jumbotron jumbotron-fluid">
 		<div class="container">
 			<h1 class="display-3">SkillMatch</h1>
@@ -50,7 +127,7 @@
 			<input type="text" ng-model="user.name" placeholder="Username">
 			<br>
 			<input type="password" ng-model="user.password" placeholder="Password">	
-			<button type="button" ng-click="createAccount()" class="btn btn-primary" ng->
+			<button type="button" ng-click="createAccount()" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
 				<span class="glyphicon glyphicon-user"></span> New User
 			</button>
 			<button type="button" ng-click="login(user)" class="btn btn-default">
