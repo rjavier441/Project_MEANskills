@@ -63,10 +63,10 @@ mongo.connect("mongodb://localhost:27017/testdb", function (err, db) {
 				}
 			}
 			if (!users_collection_present) {
-				db.createCollection('users')
+				database.createCollection('users')
 			}
 			if (!serverStarts_collection_present) {
-				db.createCollection('serverStarts')
+				database.createCollection('serverStarts')
 			}
 		})
 
@@ -232,11 +232,12 @@ handle_map.testFindCollectionsHandler = function (request, response) {
 handle_map.testFindDocHandler = function (request, response) {
 	var handlerTag = {"src": "testFindDocHandler"};
 	var hasBody = (Object.keys(request.body).length > 0);
+	console.log(request.body)
 	var searchCriteria = (hasBody) ? numerify(delintRequestBody(request.body)) : {};	// either the filter, or empty JSON
 	// response.status(200).send(`Test: ${JSON.stringify(searchCriteria)}`).end();	// test
-
 	// Find documents
 	logger.log(`Client @ ip ${request.ip} is requesting to find ${(searchCriteria === {}) ? "all documents" : ("documents matching \"" + ((typeof searchCriteria.search === "object") ? JSON.stringify(searchCriteria.search) : searchCriteria.search) + "\"")} from the ${searchCriteria.collection} collection in the database`, handlerTag);
+	
 	findDocs(searchCriteria.collection, searchCriteria.search, function (error, list) {
 		if (error != null) {
 			logger.log(`An error occurred`, handlerTag);
@@ -355,7 +356,7 @@ handle_map.testUpdateOneDocHandler = function (request, response) {
 */
 function insertDoc (collection, doc, callback) {
 	var handlerTag = {"src": "insertDoc"};
-
+	console.log('hey! ' + JSON.stringify(doc))
 	// Check if database collection exists
 	database.collection(collection, {strict: true}, function (error, result) {
 		if (error != null) {
@@ -614,6 +615,7 @@ function delintRequestBody (body, callback) {
 			break;
 		}
 	}
+	return newBody
 }
 
 /*

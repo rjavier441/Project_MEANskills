@@ -53,12 +53,12 @@
 				<div class="modal-body">
 					<form>
 						<div class="form-group">
-							<label ng-model="new_user.username" class="form-control-label">Username:</label>
-							<input type="text" class="form-control" id="recipient-name">
+							<label class="form-control-label">Username:</label>
+							<input type="text" ng-model="new_user.name" class="form-control">
 						</div>
 						<div class="form-group">
-							<label for="message-text" class="form-control-label">Password:</label>
-							<input type="password" ng-model="new_user.password" class="form-control" id="recipient-name">
+							<label class="form-control-label">Password:</label>
+							<input type="password" ng-model="new_user.password" class="form-control">
 						</div>
 						<div class="dropdown" id="classes_dropdown">
 							<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Classes Taken
@@ -110,7 +110,7 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					<button type="button" ng-click="createAccount()" class="btn btn-primary">Submit</button>
+					<button type="button" ng-click="createAccount(new_user)" class="btn btn-primary">Submit</button>
 				</div>
 			</div>
 		</div>

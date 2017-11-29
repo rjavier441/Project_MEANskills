@@ -21,21 +21,53 @@
 			})
 		}
 
-		$scope.createAccount = function(user) {
+		$scope.createAccount = function(new_user) {
+			//Check if user with that name already exists
+			var user_exists = false
 			$.ajax({
-				url:"/writeNewDoc",
-				method:"POST", 
-				data: {
-					collection: 'hey'
+				url:"/findDoc",
+				method:"POST",
+				data: {	
+					"collection": "users",
+	 				"search": {
+	 					"username": new_user.name
+ 					}
 				},
 				success: function(response) {
-					console.log(response)
-					console.log(`user ${user.name} succesfully logged in`)
+					if (response.length != 0) {
+						user_exists = true
+					} 
+					else {
+						alert("That username is already in use.")
+					}
 				},
 				error: function(err) {
 					console.log(err.responseText)
 				}
 			})
+			//If user doesn't exist already, create user
+			if (!user_exists) {
+				$.ajax({
+					url:"/writeNewDoc",
+					method:"POST", 
+					data: {
+						collection: 'users',
+						data: {
+							username: new_user.name,
+							password: new_user.password,
+							skills: $scope.skills,
+							classes: $scope.classes
+						}
+					},
+					success: function(response) {
+						console.log(response)
+						console.log(`user ${user.name} succesfully logged in`)
+					},
+					error: function(err) {
+						console.log(err.responseText)
+					}
+				})
+			}
 		}
 
 		$('#classes_dropdown li a').on('click', function(){
