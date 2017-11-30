@@ -9,21 +9,28 @@
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale = 1">
     
-    <title>SkillShare</title>
+    <title>SkillShare Search</title>
     
     <style>
         
         body {
             background-color: #ede7e1;
+            width: 95%;
+            height: 95%;
+            display: flex;
             margin: 0;
-            padding: 0;
+            padding-left: 50px;
+            padding-bottom: 150px;
+            padding-right: 50px;
+            padding-top: 50px;
             font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;   
         }
         
         #profile {
-            width: 250px;
+            float: left;
+            width: 350px;
             padding-left: 25px;
-            margin-left: 5em auto;
+            margin-left: 2%;
             padding-top: 25px;
             margin-top: 5em auto;
             padding-bottom: 25px;
@@ -31,50 +38,140 @@
             padding-right: 25px;
             margin-right: 5em auto;
             background-color: #eda150;
-            border-radius: 3em;
+            border-radius: 2em;
             font-family: Arial;
+            height: 600px;
         }
         #name{
             padding-top: 5px;
             padding-left: 5px;
         }
-        #search {
-            width: 500px;
-            margin-left: 5em auto;
-            margin-top: 5em;
-            margin-bottom: 5em auto;
-            margin-right: 5em auto;
-            height: 100px;
-            
+        
+        #searchresults{
+            float: right;
+            width: 350px;
+            background-color: #eda150;
+            border-radius: 2em;
+            font-family: Arial;
             padding-left: 25px;
+            margin-left: 5em auto;
             padding-top: 25px;
+            margin-top: 5em auto;
             padding-bottom: 25px;
+            margin-bottom: 5em auto;
             padding-right: 25px;
+            
+            margin-right: 5%;
+            height: 600px;
+        }
+        
+        #search {
+            float: right;
+            width: 400px;
+            padding-left: 25px;
+           
+            padding-top: 25px;
+            margin-top: 5em auto;
+            padding-bottom: 25px;
+            margin-bottom: 5em auto;
+            padding-right: 25px;
+            
+            margin-right: 10%;
+            margin-left: 10%;
             
             background-color: #eda150;
             border-radius: 2em;
             font-family: Arial;
-
+           
+            overflow-y: scroll;
+            overflow-x: hidden;
         }
         
-        .input{
-            width: 300px;
-            border-radius: 2em;
+        #skillsharetitle{
+            padding: 1px;
+        }
+        
+        .settingbutton{
+            
+            padding: inherit;
+            
+        }
+        
+        #myInput {
+            background-image: url('/css/searchicon.png'); /* Add a search icon to input later*/
+            background-position: 10px 12px; /* Position the search icon */
+            background-repeat: no-repeat; /* Do not repeat the icon image */
+            width: 100%; /* Full-width */
+            border-radius: 1em;
             height: 25px;
-            margin: 2em auto;
+            font-size: 16px; /* Increase font-size */
+            padding: 12px 20px 12px 40px; /* Add some padding */
+            border: 1px solid #ddd; /* Add a grey border */
+            margin-bottom: 12px; /* Add some space below the input */
+        }
+
+        #myUL {
+            /* Remove default list styling */
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            
+        }
+
+        #myUL li a {
+            border: 1px solid #ddd; /* Add a border to all links */
+            margin-top: -1px; /* Prevent double borders */
+            background-color: #f6f6f6; /* Grey background color */
+            padding: 12px; /* Add some padding */
+            text-decoration: none; /* Remove default text underline */
+            font-size: 18px; /* Increase the font-size */
+            color: black; /* Add a black text color */
+            display: block; /* Make it into a block element to fill the whole list */
+            
+        }
+
+        #myUL li a:hover:not(.header) {
+            background-color: #eee; /* Add a hover effect to all links, except for headers */
         }
         
-        
+        #set{
+            height: 25px;
+            width: 25px;
+        }
     </style>
     
     <script>
-    
+        
+        /*
+            document.addEventListener("touchstart", function(){}, true);
+        */
+        
+        function myFunction() {
+            // Declare variables
+            var input, filter, ul, li, a, i;
+            input = document.getElementById('myInput');
+            filter = input.value.toUpperCase();
+            ul = document.getElementById("myUL");
+            li = ul.getElementsByTagName('li');
+
+            // Loop through all list items, and hide those who don't match the search query
+            for (i = 0; i < li.length; i++) {
+                a = li[i].getElementsByTagName("a")[0];
+                if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                    li[i].style.display = "";
+                } else {
+                    li[i].style.display = "none";
+                }
+            }
+        }
+        
+        
         angular.module('skillshare', []).controller('MyController', MyController);
         
         function MyController($scope) {
             
-            $scope.name = 'Pranav';
-            
+            $scope.name = {{MyController.name}}
+            $scope.username = {{MyController.username}}
         }
         
     </script>
@@ -93,6 +190,7 @@
                   ];
         } 
     </script>
+
     --> 
     
 </head>
@@ -100,28 +198,60 @@
     
     
     <div id="profile" ng-controller="MyController"> 
-        <h1 id="name">Profile</h1>
+        <h2 id="name">Profile</h2>
         
-        <h3> Hello, {{name}}! </h3>
+        <h4> Hello, {{name}}! </h4>
         <h4> Username: {{username}} </h4>
+        
+        <input id="set" type="image" src="settings-icon.jpg" />
         <!--
         //need to put the scope controller in here that has the user name of the user from the control. 
         
         -->
         
     </div>
-   
         
         <!--
         //need to palce the scope controller value that is -->
         
+    <div id="search" ng-controller = "My2ndController">
         
-        
+        <h2 id="skillsharetitle">SkillShare Search</h2>
+        <input id = "myInput" type="text" onkeyup="myFunction()" placeholder="Search for skills or courses...">   
 
-    <div id= "search" ng-controller = "My2ndController">
-        
-        <h3>SkillShare Search</h3>
-        <input class = "input" type="text" placeholder="Search for skills or courses...">     
+            <ul id="myUL">
+                <li> <a href="#">EE97/EE98</a> </li>
+                <li> <a href="#">CMPE30</a> </li>
+                <li> <a href="#">CMPE50</a> </li>
+                <li> <a href="#">CMPE102</a> </li>
+                <li> <a href="#">CMPE110</a> </li>
+                <li> <a href="#">CMPE124</a> </li>
+                <li> <a href="#">CMPE125</a> </li>
+                <li> <a href="#">CMPE126</a> </li>
+                <li> <a href="#">CMPE130</a> </li>
+                <li> <a href="#">CMPE131</a> </li>
+                <li> <a href="#">CMPE140</a> </li>
+                <li> <a href="#">CMPE142</a> </li>
+                <li> <a href="#">CMPE148</a> </li>
+                <li> <a href="#">CMPE195A</a> </li>
+                <li> <a href="#">CMPE195B</a> </li>
+                <li> <a href="#">Javascript</a> </li> 
+                <li> <a href="#">Java</a> </li> 
+                <li> <a href="#">C++</a> </li> 
+                <li> <a href="#">Python</a> </li> 
+                <li> <a href="#">Git</a> </li> 
+                <li> <a href="#">Agile Development</a> </li> 
+                <li> <a href="#">React</a> </li> 
+                <li> <a href="#">Angular</a> </li> 
+                <li> <a href="#">Node</a> </li> 
+                <li> <a href="#">Shell Scripting</a> </li> 
+                <li> <a href="#">Computer Vision</a> </li> 
+                <li> <a href="#">Ruby</a> </li> 
+                <li> <a href="#">Perl</a> </li> 
+                <li> <a href="#">PHP</a> </li> 
+                <li> <a href="#">Computer Networking</a> </li> 
+        </ul>
+    </div>
         <!--
         <ul>
             <li ng-repeat="rebel in rebels">
@@ -130,29 +260,22 @@
         </ul>
         The search doesn't work yet...-->
         
+    <div id="searchresults">
+        <h2 id="skillsharetitle">Results:</h2>
     </div>
     
 </body>
 </html>
 
+    <!--
 
-
-<!-- Old Search Design
-
-            width: 500px;
-            margin: 5em auto;
-            height: 150px;
-            padding: 100px;
-            background-color: #eda150;
-            border-radius: 2em;
-
-            
-        #search {
-        
-        width: 500px;
-            margin: 5em auto;
+        //Old Search code
+            margin-left: 5em auto;
+            margin-top: 5em;
+            margin-bottom: 5em auto;
+            margin-right: 5em auto;
             height: 100px;
-            
+             
             padding-left: 25px;
             padding-top: 25px;
             padding-bottom: 25px;
@@ -163,7 +286,14 @@
             font-family: Arial;
             
 
-        }
+         
 
-            -->
+    
+    <div id="result" ng-controller = "My3rdController">
+        
+        <h3 id="skillsharetitle">Search Results</h3>
+        
+    </div> 
+    -->
+
 
