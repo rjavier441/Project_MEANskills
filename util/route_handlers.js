@@ -122,7 +122,7 @@ handle_map.loginHandler = function (request, response) {			// POST request: REST
 		name: request.body.name,
 		password: request.body.password
 	}
-
+	
 	//Hash the password
 	var password_hash = hashString(user.password)
 

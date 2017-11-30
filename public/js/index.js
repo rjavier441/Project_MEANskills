@@ -5,26 +5,32 @@
 		$scope.skills = []
 
 		$scope.login = function(user) {
-			$.ajax({
-				url:"/login",
-				method:"POST", 
-				dataType: 'json',
-				data: {
-					username: user.name,
-					password: user.password
-				},
-				success: function(response) {
-					if (response.result == "success") {
-						alert(`Welcome, ${user.name}!`)	
-					} else {
-						alert("Login failed.")
+			//verify both fields are completed
+			if(typeof user == "undefined" || !user.name || !user.password) {
+				alert("Cannot login. Please fill out both fields.")
+			} else {
+				$.ajax({
+					url:"/login",
+					method:"POST", 
+					dataType: 'json',
+					data: {
+						username: user.name,
+						password: user.password
+					},
+					success: function(response) {
+						if (response.result == "success") {
+							alert(`Welcome, ${user.name}!`)	
+						} else {
+							alert("Login failed.")
+						}
+					},
+					error: function(err) {
+						console.log('Error!')
+						console.log(err)
 					}
-				},
-				error: function(err) {
-					console.log('Error!')
-					console.log(err)
-				}
-			})
+				})
+			}
+			
 		}
 
 		$scope.createAccount = async function(new_user) {
