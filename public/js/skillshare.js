@@ -1,10 +1,17 @@
+angular.module('skillshare', []).controller('MyController', MyController);
+
+function MyController($scope) {
+    
+    $scope.name = {{MyController.name}}
+    $scope.username = {{MyController.username}}
+}
         
 function myFunction() {
     // Declare variables
     var input, filter, ul, li, a, i;
-    input = document.getElementById('myInput');
-    filter = input.value.toUpperCase();
-    ul = document.getElementById("myUL");
+    input = $('#myInput').val();
+    filter = input.toUpperCase();
+    ul = $("#myUL");
     li = ul.getElementsByTagName('li');
 
     // Loop through all list items, and hide those who don't match the search query
@@ -19,10 +26,3 @@ function myFunction() {
 }
 
 
-angular.module('skillshare', []).controller('MyController', MyController);
-
-function MyController($scope) {
-    
-    $scope.name = {{MyController.name}}
-    $scope.username = {{MyController.username}}
-}
