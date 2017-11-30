@@ -9,6 +9,7 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://www.w3schools.com/lib/w3.js"></script>
     <link rel="stylesheet" type="text/css" href="css/skillshare.css">
     <script type="text/javascript" src="js/skillshare.js"></script>
     
@@ -36,8 +37,7 @@
     <div id="search" ng-controller = "My2ndController">
         
         <h2 id="skillsharetitle">SkillShare Search</h2>
-        <input id = "myInput" type="text" onkeyup="myFunction()" placeholder="Search for skills or courses...">   
-
+        <input id = "myInput" type="text"  oninput="w3.filterHTML('#myUL', 'li', this.value)" placeholder="Search for skills or courses...">   
             <ul id="myUL">
                 <li> <a href="#">EE97/EE98</a> </li>
                 <li> <a href="#">CMPE30</a> </li>
@@ -80,7 +80,7 @@
         The search doesn't work yet...-->
         
     <div id="searchresults">
-        <h2 id="skillsharetitle">Results:</h2>
+        <h2 id="skillsharetitle">Results</h2>
     </div>
     
 </body>

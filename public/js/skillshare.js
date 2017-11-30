@@ -1,11 +1,41 @@
 angular.module('skillshare', []).controller('MyController', MyController);
-
-function MyController($scope) {
-    
-    $scope.name = {{MyController.name}}
-    $scope.username = {{MyController.username}}
-}
+  //= {{MyController.name}}
+    //    {{MyController.username}}
         
+function MyController($scope) {
+  
+    $scope.name = "Pranav";
+    $scope.username = "";
+}
+      
+if(typeof jQuery == "undefined"){
+    
+    alert("jQuery not found.");
+    
+}
+else{
+    
+    alert("jQuery found.");    
+    
+}
+
+$("#li").click(function(){
+    alert("clicked");
+});
+
+
+
+/*
+function myFunction(){
+
+    var input, filter, ul, li, a, i;
+    input = document.getElementById('myInput');
+
+
+
+}
+*/
+/*
 function myFunction() {
     // Declare variables
     var input, filter, ul, li, a, i;
@@ -26,3 +56,4 @@ function myFunction() {
 }
 
 
+*/
