@@ -679,15 +679,20 @@ function numerify (obj) {
 		return obj;
 	}
 }
-// END Utility Methods
 
+/*
+	@function 	hashString
+	@parameter 	string - the string needing to be encoded
+	@returns 	An encoded string used for hashing.
+	@details 	This function takes a string and encrypts it using caesars cipher. This encryption is used for hashing.
+*/
 function hashString(unhashed_string) {
 	
 	// Make an output variable
 	var output = '';
 
 	//Declare number of letters to shift by
-	var amount = 5;
+	var amount = 13;
 
 	// Go through each character
 	for (var i = 0; i < unhashed_string.length; i ++) {
@@ -711,6 +716,7 @@ function hashString(unhashed_string) {
 	// All done!
 	return output;
 }
+// END Utility Methods
 
 module.exports = handle_map;
 // END route_handlers.js 
