@@ -52,13 +52,33 @@
 				</div>
 				<div class="modal-body">
 					<form>
+						<div class="form-group half_input">
+							<label class="form-control-label half_input">First Name:</label>
+							<input type="text" ng-model="new_user.first_name" class="form-control">
+						</div>
+						<div class="form-group half_input">
+							<label class="form-control-label">Last Name:</label>
+							<input type="text" ng-model="new_user.last_name" class="form-control">
+						</div>
 						<div class="form-group">
 							<label class="form-control-label">Username:</label>
-							<input type="text" ng-model="new_user.name" class="form-control">
+							<input type="text" ng-model="new_user.username" class="form-control">
 						</div>
 						<div class="form-group">
 							<label class="form-control-label">Password:</label>
 							<input type="password" ng-model="new_user.password" class="form-control">
+						</div>
+						<div class="form-group">
+							<label class="form-control-label">Major:</label>
+							<input type="text" ng-model="new_user.major" class="form-control">
+						</div>
+						<div class="form-group">
+							<label class="form-control-label">Graduating (MM/YYYY):</label>
+							<input type="text" ng-model="new_user.grad" class="form-control">
+						</div>
+						<div class="form-group">
+							<label class="form-control-label">Student ID:</label>
+							<input type="text" ng-model="new_user.sid" class="form-control">
 						</div>
 						<div class="dropdown" id="classes_dropdown">
 							<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Classes Taken
@@ -105,7 +125,6 @@
 							</ul>
 							| <span ng-repeat="x in skills"> <a ng-click="removeSkill()" href="#"> {{x}} </a> |</span>	
 						</div>
-						
 					</form>
 				</div>
 				<div class="modal-footer">
