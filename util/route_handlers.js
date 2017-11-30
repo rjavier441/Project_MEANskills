@@ -117,15 +117,39 @@ handle_map.loginHandler = function (request, response) {			// POST request: REST
 	logger.log(`Login request from ip ${request.ip}`, handlerTag);
 	logger.log(request.toString(), handlerTag);
 	response.set("Content-Type", "text/javascript");
-	response.sendFile("js/index.js", options, function (error) {
-		if (error) {
-			logger.log(error, handlerTag);
-			response.status(500).end();
-		} else {
-			logger.log(`Login successful for client on ${settings.port}`, handlerTag);
-			response.end();
-		}
-	});
+
+	var user = {
+		name: request.body.name,
+		password: request.body.password
+	}
+
+	//Hash the password
+	var password_hash = hashString(user.password)
+
+	//Attempt to find users in the hashed password collection
+		//Retrieve all entries containing the hashed password
+		findDocs("users", {password: password_hash}, function(error, list) {
+			if (error != null) {
+				logger.log(`An error occurred`, handlerTag);
+				response.status(500).send(error).end();
+			}
+
+			//If object in collection has same username, login was successful.
+			var login_successful = false
+			if (list.length != 0) {
+				for (var i=0; i<list.length; i++) {
+					if (list[i].name == user.name) {
+						login_successful = true
+					}
+				}	
+			}
+
+			var login_result = login_successful ? "success" : "failure"
+			var html_code = login_successful ? 200 : 500
+			response.status(200).send(JSON.stringify({result: login_result})).end()
+		})
+
+
 };
 
 /*
@@ -167,6 +191,11 @@ handle_map.testWriteNewDocHandler = function (request, response) {
 	var handlerTag = {"src": "testWriteNewDocHandler"};
 	var hasBody = (Object.keys(request.body).length > 0);
 	var searchCriteria = (hasBody) ? numerify(delintRequestBody(request.body)) : {};
+
+	//Hash password if new user is being inserted to users collection
+	if (searchCriteria.collection == "users") {
+		searchCriteria.data.password = hashString(searchCriteria.data.password)
+	}
 
 	// Perform Write
 	logger.log(`Client @ ip ${request.ip} is requesting to write a new document of ${typeof searchCriteria.data} ${(typeof searchCriteria.data === "object") ? JSON.stringify(searchCriteria.data) : searchCriteria.data} to the ${searchCriteria.collection} collection in the database`, handlerTag);
@@ -232,7 +261,6 @@ handle_map.testFindCollectionsHandler = function (request, response) {
 handle_map.testFindDocHandler = function (request, response) {
 	var handlerTag = {"src": "testFindDocHandler"};
 	var hasBody = (Object.keys(request.body).length > 0);
-	console.log(request.body)
 	var searchCriteria = (hasBody) ? numerify(delintRequestBody(request.body)) : {};	// either the filter, or empty JSON
 	// response.status(200).send(`Test: ${JSON.stringify(searchCriteria)}`).end();	// test
 	// Find documents
@@ -653,7 +681,9 @@ function numerify (obj) {
 }
 // END Utility Methods
 
-
+function hashString(unhashed_string) {
+	return unhashed_string += "ESKETTIT"
+}
 
 module.exports = handle_map;
 // END route_handlers.js 

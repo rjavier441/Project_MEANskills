@@ -8,15 +8,21 @@
 			$.ajax({
 				url:"/login",
 				method:"POST", 
+				dataType: 'json',
 				data: {
 					username: user.name,
 					password: user.password
 				},
 				success: function(response) {
-					console.log(`user ${user.name} succesfully logged in`)
+					if (response.result == "success") {
+						alert(`Welcome, ${user.name}!`)	
+					} else {
+						alert("Login failed.")
+					}
 				},
-				error: function() {
-					console.log('uh oh')
+				error: function(err) {
+					console.log('Error!')
+					console.log(err)
 				}
 			})
 		}
@@ -46,7 +52,6 @@
 				}
 			})
 
-			console.log("3: " + user_exists)
 			//If user doesn't exist already, create user
 			if (!user_exists) {
 				$.ajax({
@@ -63,6 +68,10 @@
 					},
 					success: function(response) {
 						console.log(`account created for ${new_user.name}.`)
+						$scope.login({
+							name: new_user.name, 
+							password: new_user.password
+						})
 					},
 					error: function(err) {
 						console.log(err.responseText)
