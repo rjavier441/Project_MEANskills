@@ -105,6 +105,26 @@ handle_map.rootHandler = function (request, response) {			// GET request on root
 	});
 };
 
+/*	
+	@function	homeHandler
+	@parameter	request - the web request object provided by express.js
+	@parameter	response - the web response object provided by express.js
+	@returns	n/a
+	@details 	This function handles all requests for the home page (i.e. "/"). Used on a GET request
+*/
+handle_map.homeHandler = function (request, response) {			// GET request on root dir (login page-> index.html)
+	response.set("Content-Type", "text/html");
+	response.sendFile("skillshare.html", options, function (error) {
+		if (error) {
+			logger.log(error);
+			response.status(500).send({result: "success"}).end();
+		} else {
+			logger.log(`Sent skillshare.html to ${settings.port}`);
+			response.end();
+		}
+	});
+};
+
 /*
 	@function	loginHandler
 	@parameter	request - the web request object provided by express.js
