@@ -10,17 +10,18 @@ function MyController($scope) {
       
 if(typeof jQuery == "undefined"){
     
-    alert("jQuery not found.");
+    alert("Contact Pranav!");
     
 }
 else{
     
-    alert("jQuery found.");    
+    alert("Welcome to SkillShare!");    
+
     
 }
 
-$("#li").click(function(){
-    alert("clicked");
+$("ul").click(function(){
+    alert("Hey!");
 });
 
 
