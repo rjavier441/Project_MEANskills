@@ -16,12 +16,19 @@ if(typeof jQuery == "undefined"){
 else{
     
     alert("Welcome to SkillShare!");    
-
     
 }
 
-$("ul").click(function(){
-    alert("Hey!");
+document.getElementById("skill").onclick = function(){
+
+    var a = "";
+    a = document.getElementById("skill").value;
+    document.getElementById("wow").innerHTML = a;
+
+}
+
+$("ul").innerHTML(function(){
+    
 });
 
 
