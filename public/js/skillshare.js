@@ -18,20 +18,58 @@ else{
     alert("Welcome to SkillShare!");    
     
 }
+/*
+document.getElementById("skill").onclick function(){
 
-document.getElementById("skill").onclick = function(){
+    var a = document.getElementsByTagName("li");
+    console.log(a);
+    //document.getElementById("wow").innerHTML = a;
 
-    var a = "";
-    a = document.getElementById("skill").value;
-    document.getElementById("wow").innerHTML = a;
 
 }
+
 
 $("ul").innerHTML(function(){
     
 });
+*/
+
+/*
+
+    KEEP A COPY:
+     <li> <a id="skill" href="#">EE97/EE98</a> </li>
+                <li> <a id="skill" href="#">CMPE30</a> </li>
+                <li> <a id="skill" href="#">CMPE50</a> </li>
+                <li> <a id="skill" href="#">CMPE102</a> </li>
+                <li> <a id="skill" href="#">CMPE110</a> </li>
+                <li> <a id="skill" href="#">CMPE124</a> </li>
+                <li> <a id="skill" href="#">CMPE125</a> </li>
+                <li> <a id="skill" href="#">CMPE126</a> </li>
+                <li> <a id="skill" href="#">CMPE130</a> </li>
+                <li> <a id="skill" href="#">CMPE131</a> </li>
+                <li> <a id="skill" href="#">CMPE140</a> </li>
+                <li> <a id="skill" href="#">CMPE142</a> </li>
+                <li> <a id="skill" href="#">CMPE148</a> </li>
+                <li> <a id="skill" href="#">CMPE195A</a> </li>
+                <li> <a id="skill" href="#">CMPE195B</a> </li>
+                <li> <a id="skill" href="#">Javascript</a> </li> 
+                <li> <a id="skill" href="#">Java</a> </li> 
+                <li> <a id="skill" href="#">C++</a> </li> 
+                <li> <a id="skill" href="#">Python</a> </li> 
+                <li> <a id="skill" href="#">Git</a> </li> 
+                <li> <a id="skill" href="#">Agile Development</a> </li> 
+                <li> <a id="skill" href="#">React</a> </li> 
+                <li> <a id="skill" href="#">Angular</a> </li> 
+                <li> <a id="skill" href="#">Node</a> </li> 
+                <li> <a id="skill" href="#">Shell Scripting</a> </li> 
+                <li> <a id="skill" href="#">Computer Vision</a> </li> 
+                <li> <a id="skill" href="#">Ruby</a> </li> 
+                <li> <a id="skill" href="#">Perl</a> </li> 
+                <li> <a id="skill" href="#">PHP</a> </li> 
+                <li> <a id="skill" href="#">Computer Networking</a> </li> 
 
 
+*/
 
 /*
 function myFunction(){
