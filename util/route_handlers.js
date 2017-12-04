@@ -850,44 +850,6 @@ function hashString(unhashed_string) {
 	// All done!
 	return output;
 }
-// END Utility Methods
-
-/*
-	@function 	hashString
-	@parameter 	string - the string needing to be encoded
-	@returns 	An encoded string used for hashing.
-	@details 	This function takes a string and encrypts it using caesars cipher. This encryption is used for hashing.
-*/
-function hashString(unhashed_string) {
-	
-	// Make an output variable
-	var output = '';
-
-	//Declare number of letters to shift by
-	var amount = 13;
-
-	// Go through each character
-	for (var i = 0; i < unhashed_string.length; i ++) {
-		// Get the character we'll be appending
-		var c = unhashed_string[i];
-		// If it's a letter...
-		if (c.match(/[a-z]/i)) {
-			// Get its code
-			var code = unhashed_string.charCodeAt(i);
-			// Uppercase letters
-			if ((code >= 65) && (code <= 90))
-				c = String.fromCharCode(((code - 65 + amount) % 26) + 65);
-			// Lowercase letters
-			else if ((code >= 97) && (code <= 122))
-				c = String.fromCharCode(((code - 97 + amount) % 26) + 97);
-		}
-		// Append
-		output += c;
-	}
-
-	// All done!
-	return output;
-}
 
 /*
 	@function 	testRuntime()
@@ -935,6 +897,7 @@ function hashString(unhashed_string) {
 // 		}
 // 	})
 // }
+
 // END Utility Methods
 
 module.exports = handle_map;
