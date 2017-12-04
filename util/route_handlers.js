@@ -2,7 +2,7 @@
 // Name: 			Rolando Javier
 // File: 			route_handlers.js
 // Date Created: 	October 26, 2017
-// Last Modified: 	November 5, 2017
+// Last Modified: 	November 5, 2017`
 // Details:
 //				 	This file abstracts all route handler functions to be used by server.js. The server.js file
 //				 	takes these and places them to their desired endpoints. This frees up the server code from
@@ -86,6 +86,18 @@ mongo.connect("mongodb://localhost:27017/testdb", function (err, db) {
 				logger.log("Postmark successfully written to database");
 			}
 		});
+
+		//test Runtime of Searching Database.
+
+		// for (var i=1; i<5; i++) {
+		// 	var user_size = Math.pow(10, i)
+		// 	console.log(`Searching for ariskoumis with ${user_size} other people in DB.`)
+		// 	for (var j=0; j<10; j++) {
+		// 		testRuntime(i)
+		// 	}
+		// 	console.log('\n')
+		// }
+		
 	}
 });
 
@@ -107,6 +119,26 @@ handle_map.rootHandler = function (request, response) {			// GET request on root
 			response.status(500).end();
 		} else {
 			logger.log(`Sent index.html to ${settings.port}`);
+			response.end();
+		}
+	});
+};
+
+/*	
+	@function	homeHandler
+	@parameter	request - the web request object provided by express.js
+	@parameter	response - the web response object provided by express.js
+	@returns	n/a
+	@details 	This function handles all requests for the home page (i.e. "/"). Used on a GET request
+*/
+handle_map.homeHandler = function (request, response) {			// GET request on root dir (login page-> index.html)
+	response.set("Content-Type", "text/html");
+	response.sendFile("skillshare.html", options, function (error) {
+		if (error) {
+			logger.log(error);
+			response.status(500).send({result: "success"}).end();
+		} else {
+			logger.log(`Sent skillshare.html to ${settings.port}`);
 			response.end();
 		}
 	});
@@ -134,27 +166,27 @@ handle_map.loginHandler = function (request, response) {			// POST request: REST
 	var password_hash = hashString(user.password)
 
 	//Attempt to find users in the hashed password collection
-		//Retrieve all entries containing the hashed password
-		findDocs("users", {password: password_hash}, function(error, list) {
-			if (error != null) {
-				logger.log(`An error occurred`, handlerTag);
-				response.status(500).send(error).end();
-			}
+	//Retrieve all entries containing the hashed password
+	findDocs("users", {password: password_hash}, function(error, list) {
+		if (error != null) {
+			logger.log(`An error occurred`, handlerTag);
+			response.status(500).send(error).end();
+		}
 
-			//If object in collection has same username, login was successful.
-			var login_successful = false
-			if (list.length != 0) {
-				for (var i=0; i<list.length; i++) {
-					if (list[i].name == user.name) {
-						login_successful = true
-					}
-				}	
-			}
+		//If object in collection has same username, login was successful.
+		var login_successful = false
+		if (list.length != 0) {
+			for (var i=0; i<list.length; i++) {
+				if (list[i].name == user.name) {
+					login_successful = true
+				}
+			}	
+		}
 
-			var login_result = login_successful ? "success" : "failure"
-			var html_code = login_successful ? 200 : 500
-			response.status(200).send(JSON.stringify({result: login_result})).end()
-		})
+		var login_result = login_successful ? "success" : "failure"
+		var html_code = login_successful ? 200 : 500
+		response.status(200).send(JSON.stringify({result: login_result})).end()
+	})
 
 
 };
@@ -696,14 +728,13 @@ function delintRequestBody (body, callback) {
 			break;
 		}
 	}
-
 	// If lint was not found at all, simply return the untouched stuff
 	logger.log(`Lint was not found!`, handlerTag);	// Debug
 	if (typeof callback === "undefined") {
 		return newBody;
 	} else {
 		callback(newBody);
-	}
+  }
 }
 
 /*
@@ -820,9 +851,55 @@ function hashString(unhashed_string) {
 	// All done!
 	return output;
 }
+
+/*
+	@function 	testRuntime()
+	@parameter 	users_needed: number of users in database.
+	@returns 	nothing
+	@details 	This function tests the runtime of MongoDB's searching for multiple collection sizes.
+*/
+// function testRuntime(users_needed) {
+// 	//create array which initializes with only ariskoumis
+// 	var user_array = [{username: "ariskoumis"}]
+
+// 	//populate user_array 
+// 	var users_created = 0
+// 	while (users_created < users_needed) {
+// 		var temp_user = {
+// 			username: Math.random().toString(36).substr(2, 7)
+// 		}
+// 		user_array.push(temp_user)
+// 		users_created++
+// 	}
+
+// 	// Check if database collection exists
+// 	database.collection("users", {strict: true}, function (error, result) {
+// 		if (error != null) {
+// 			console.log(error)
+// 		} else {
+// 			result.remove({})
+// 			// Else, no error occurred, and the database collection was found; use it to write to the database
+// 			result.insertMany(user_array).then(function (promiseResult) {
+// 				console.log("Insertion successful")
+// 			});
+// 		}
+// 	});
+
+// 	//Find User Aris Koumis
+// 	console.time('searchForAris')
+// 	searchForAris()
+// 	console.timeEnd('searchForAris')
+// }
+
+// searchForAris = async function() {
+// 	await findDocs("users", {username: "ariskoumis"}, function(error, list) {
+// 		if (error != null) {
+// 			console.log(error)
+// 		}
+// 	})
+// }
+
 // END Utility Methods
-
-
 
 module.exports = handle_map;
 // END route_handlers.js 
