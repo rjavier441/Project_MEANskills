@@ -20,8 +20,8 @@
     <div id="profile" ng-controller="MyController"> 
         <h2 id="name" id="username">Profile</h2>
         
-        <h4> Hello, {{name}}! </h4>
-        <h4> Username: {{username}} </h4>
+        <h3> Hello, {{name}}! </h4>
+        <h3> Username: {{username}} </h4>
         
         <input id="set" type="image" src="images/settings-icon.jpg" />
         <!--
@@ -39,36 +39,36 @@
         <h2 id="skillsharetitle">SkillShare Search</h2>
         <input id = "myInput" type="text"  oninput="w3.filterHTML('#myUL', 'li', this.value)" placeholder="Search for skills or courses...">   
             <ul id="myUL">
-                <li id="skill"> <a href="#">EE97/EE98</a> </li> 
-                <li id="skill"> <a href="#">CMPE30</a> </li>
-                <li id="skill"> <a href="#">CMPE50</a> </li>
-                <li id="skill"> <a href="#">CMPE102</a> </li>
-                <li id="skill"> <a href="#">CMPE110</a> </li>
-                <li id="skill"> <a href="#">CMPE124</a> </li>
-                <li id="skill"> <a href="#">CMPE125</a> </li>
-                <li id="skill"> <a href="#">CMPE126</a> </li>
-                <li id="skill"> <a href="#">CMPE130</a> </li>
-                <li id="skill"> <a href="#">CMPE131</a> </li>
-                <li id="skill"> <a href="#">CMPE140</a> </li>
-                <li id="skill"> <a href="#">CMPE142</a> </li>
-                <li id="skill"> <a href="#">CMPE148</a> </li>
-                <li id="skill"> <a href="#">CMPE195A</a> </li>
-                <li id="skill"> <a href="#">CMPE195B</a> </li>
-                <li id="skill"> <a href="#">Javascript</a> </li> 
-                <li id="skill"> <a href="#">Java</a> </li> 
-                <li id="skill"> <a href="#">C++</a> </li> 
-                <li id="skill"> <a href="#">Python</a> </li> 
-                <li id="skill"> <a href="#">Git</a> </li> 
-                <li id="skill"> <a href="#">Agile Development</a> </li> 
-                <li id="skill"> <a href="#">React</a> </li> 
-                <li id="skill"> <a href="#">Angular</a> </li> 
-                <li id="skill"> <a href="#">Node</a> </li> 
-                <li id="skill"> <a href="#">Shell Scripting</a> </li> 
-                <li id="skill"> <a href="#">Computer Vision</a> </li> 
-                <li id="skill"> <a href="#">Ruby</a> </li> 
-                <li id="skill"> <a href="#">Perl</a> </li> 
-                <li id="skill"> <a href="#">PHP</a> </li> 
-                <li id="skill"> <a href="#">Computer Networking</a> </li> 
+                <li id="classes"> <a href="#">EE97/EE98 <button id="button">SELECT</button></a> </li> 
+                <li id="classes"> <a href="#">CMPE30    <button id="button">SELECT</button></a> </li>
+                <li id="classes"> <a href="#">CMPE50    <button id="button">SELECT</button></a> </li>
+                <li id="classes"> <a href="#">CMPE102   <button id="button">SELECT</button></a> </li>
+                <li id="classes"> <a href="#">CMPE110   <button id="button">SELECT</button></a> </li>
+                <li id="classes"> <a href="#">CMPE124   <button id="button">SELECT</button></a> </li>
+                <li id="classes"> <a href="#">CMPE125   <button id="button">SELECT</button></a> </li>
+                <li id="classes"> <a href="#">CMPE126   <button id="button">SELECT</button></a> </li>
+                <li id="classes"> <a href="#">CMPE130   <button id="button">SELECT</button></a> </li>
+                <li id="classes"> <a href="#">CMPE131   <button id="button">SELECT</button></a> </li>
+                <li id="classes"> <a href="#">CMPE140   <button id="button">SELECT</button></a> </li>
+                <li id="classes"> <a href="#">CMPE142   <button id="button">SELECT</button></a> </li>
+                <li id="classes"> <a href="#">CMPE148   <button id="button">SELECT</button></a> </li>
+                <li id="classes"> <a href="#">CMPE195A  <button id="button">SELECT</button></a> </li>
+                <li id="classes"> <a href="#">CMPE195B  <button id="button">SELECT</button></a> </li>
+                <li id="skill"> <a href="#">Javascript<button id="button">SELECT</button></a> </li> 
+                <li id="skill"> <a href="#">Java      <button id="button">SELECT</button></a> </li> 
+                <li id="skill"> <a href="#">C++       <button id="button">SELECT</button></a> </li> 
+                <li id="skill"> <a href="#">Python    <button id="button">SELECT</button></a> </li> 
+                <li id="skill"> <a href="#">Git       <button id="button">SELECT</button></a> </li> 
+                <li id="skill"> <a href="#">Agile Development<button id="button">SELECT</button></a> </li> 
+                <li id="skill"> <a href="#">React     <button id="button">SELECT</button></a> </li> 
+                <li id="skill"> <a href="#">Angular   <button id="button">SELECT</button></a> </li> 
+                <li id="skill"> <a href="#">Node      <button id="button">SELECT</button></a> </li> 
+                <li id="skill"> <a href="#">Shell Scripting<button id="button">SELECT</button></a> </li> 
+                <li id="skill"> <a href="#">Computer Vision<button id="button">SELECT</button></a> </li> 
+                <li id="skill"> <a href="#">Ruby      <button id="button">SELECT</button></a> </li> 
+                <li id="skill"> <a href="#">Perl      <button id="button">SELECT</button></a> </li> 
+                <li id="skill"> <a href="#">PHP       <button id="button">SELECT</button></a> </li> 
+                <li id="skill"> <a href="#">Computer Networking<button id="button">SELECT</button></a> </li> 
             </ul>
     </div>
         <!--
@@ -86,68 +86,68 @@
 
             <ul id="myul">
                 <li>    
-                    <p>Name:</p>
-                    <p>Match Score:</p>   
-                    <p>Major:</p>
-                    <p>Graduation:</p>     
-                    <p>Skills:</p>
-                    <p>Classes:</p>
+                    <p>Name: </p>
+                    <p>Match Score: </p>   
+                    <p>Major: </p>
+                    <p>Graduation: </p>     
+                    <p>Skills: </p>
+                    <p>Classes: </p>
                 </li>
                 <li>    
-                    <p>Name:</p>
-                    <p>Match Score:</p>        
-                    <p>Major:</p>
-                    <p>Graduation:</p>     
-                    <p>Skills:</p>
-                    <p>Classes:</p>
+                    <p>Name: </p>
+                    <p>Match Score: </p>        
+                    <p>Major: </p>
+                    <p>Graduation: </p>     
+                    <p>Skills: </p>
+                    <p>Classes: </p>
                 </li>
                 <li>    
-                    <p>Name:</p>
-                    <p>Match Score:</p>        
-                    <p>Major:</p>
-                    <p>Graduation:</p>     
-                    <p>Skills:</p>
-                    <p>Classes:</p>
+                    <p>Name: </p>
+                    <p>Match Score: </p>        
+                    <p>Major: </p>
+                    <p>Graduation: </p>     
+                    <p>Skills: </p>
+                    <p>Classes: </p>
                 </li>
                 <li>    
-                    <p>Name:</p>
-                    <p>Match Score:</p>       
-                    <p>Major:</p>
-                    <p>Graduation:</p>     
-                    <p>Skills:</p>
-                    <p>Classes:</p>
+                    <p>Name: </p>
+                    <p>Match Score: </p>        
+                    <p>Major: </p>
+                    <p>Graduation: </p>     
+                    <p>Skills: </p>
+                    <p>Classes: </p>
                 </li>
                 <li>    
-                    <p>Name:</p>
-                    <p>Match Score:</p>       
-                    <p>Major:</p>
-                    <p>Graduation:</p>     
-                    <p>Skills:</p>
-                    <p>Classes:</p>
+                    <p>Name: </p>
+                    <p>Match Score: </p>        
+                    <p>Major: </p>
+                    <p>Graduation: </p>     
+                    <p>Skills: </p>
+                    <p>Classes: </p>
                 </li>
                 <li>    
-                    <p>Name:</p>
-                    <p>Match Score:</p>       
-                    <p>Major:</p>
-                    <p>Graduation:</p>     
-                    <p>Skills:</p>
-                    <p>Classes:</p>
+                    <p>Name: </p>
+                    <p>Match Score: </p>        
+                    <p>Major: </p>
+                    <p>Graduation: </p>     
+                    <p>Skills: </p>
+                    <p>Classes: </p>
                 </li>
                 <li>    
-                    <p>Name:</p>
-                    <p>Match Score:</p>       
-                    <p>Major:</p>
-                    <p>Graduation:</p>     
-                    <p>Skills:</p>
-                    <p>Classes:</p>
+                    <p>Name: </p>
+                    <p>Match Score: </p>        
+                    <p>Major: </p>
+                    <p>Graduation: </p>     
+                    <p>Skills: </p>
+                    <p>Classes: </p>
                 </li>
                 <li>    
-                    <p>Name:</p>
-                    <p>Match Score:</p>       
-                    <p>Major:</p>
-                    <p>Graduation:</p>     
-                    <p>Skills:</p>
-                    <p>Classes:</p>
+                    <p>Name: </p>
+                    <p>Match Score: </p>        
+                    <p>Major: </p>
+                    <p>Graduation: </p>     
+                    <p>Skills: </p>
+                    <p>Classes: </p>
                 </li>
             </ul>
 

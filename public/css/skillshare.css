@@ -1,6 +1,7 @@
 body {
     overflow: hidden;
-    background-color: #ede7e1;
+    background-color: #fcf8f4;
+    /*  Previously used: #ede7e1 */
     width: 95%;
     height: 95%;
     display: flex;
@@ -136,7 +137,9 @@ body {
     display: block; /* Make it into a block element to fill the whole list */
     
 }
-
+ 
+/* the #myul is for the styling of the results section.
+    the #myUL is for the styling of the search skills section*/
 #myul {
     /* Remove default list styling */
     list-style-type: none;
@@ -157,7 +160,6 @@ body {
     
 }
 
-
 #myUL li a:hover:not(.header) {
     background-color: #eee; /* Add a hover effect to all links, except for headers */
 }
@@ -165,14 +167,6 @@ body {
 #set{
     height: 25px;
     width: 25px;
-}
-
-#button{
-    font-family: Arial;
-    margin-left: 20px;
-
-    border: none;
-    padding: none;
 }
 
 #resultsdisplay{
@@ -198,8 +192,21 @@ body {
     
 }
 
-#resultboxes{
-
-
-
+#button{
+    float: right;
+    font-family: Arial;
+    margin-right: 30px;
+    height: 20px;
+    border: none;
+    padding: none;
+    background-color: #eda150;
+    /*#f6f6f6*/
 }
+
+
+
+
+
+
+
+

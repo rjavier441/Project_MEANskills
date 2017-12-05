@@ -1,4 +1,4 @@
-angular.module('skillshare', []).controller('MyController', MyController)
+var app = angular.module('skillshare', []).controller('MyController', MyController)
                                 .controller('My2ndController', My2ndController);
                                 //.controller('My3rdController', My3rdController);
                             
@@ -13,11 +13,54 @@ function MyController($scope) {
 }
 
 function My2ndController($scope) {
+    /*
+    var x = 20;
+    var array = [20];
+    var y = "";
+    y = document.getElementById("#skill");
+    //var b = myUL;
+      
+        for (var i = array.length - 1; i >= 0; i--) {
+            array[i]
+        }
+
+        array.push(value);
+        console.log(array);
+        
+    //array.push(y);
+    */
+
+    //console.log(array);
+
+    app.controller('My2ndController', function($scope, $http) {
+        $http.post("/test/skillmatch").then(function(response) {
+            $scope.skills = [];
+            $scope.classes = [];
+            }, function(response) {
+           //Second function handles error
+                $scope.skills = "Something went wrong";
+            });
+    });
+       
+    $("#myUL").click(function(){    
+     
+        alert("Clicked!");
+ 
+    })
 
 }
  
-function My3rdController($scope) {
-
+function My3rdController($scope) { 
+    //the ng-controller for this is hooked up to the div of the results section. 
+    app.controller('My3rdController', function($scope, $http) {
+        $http.post("/test/skillmatch").then(function(response) {
+            $scope.skills = response.data;
+            $scope.classes = response.data;
+            }, function(response) {
+           //Second function handles error
+                $scope.skills = "Something went wrong";
+            });
+    });
 }   
 
 if(typeof jQuery == "undefined"){
@@ -30,9 +73,6 @@ else{
     alert("Welcome to SkillShare!");    
     
 }
-
-
-
 
 
 
