@@ -35,10 +35,14 @@
                     <button ng-repeat="skill in possible_skills" type="button" ng-click="toggleButton($event)" class="list-group-item list-group-item-action">{{skill}}</button>
                     
                 </div>
-                <button>Submit</button>
+                <button type="button" class="btn btn-primary btn-block" ng-click="skillMatch()">Submit <span class="glyphicon glyphicon-arrow-right"></span></button>
             </div>
             <div class="col-sm-6">
                 <h2>Matches</h2>
+                <div ng-repeat="user in matched_users">
+                    {{user.name}}
+                    
+                </div>
             </div>
             <div class="col-sm-3">
                 <h2>Info</h2>

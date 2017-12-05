@@ -78,7 +78,8 @@
 								major: new_user.major,
 								grad: new_user.grad,
 								skills: $scope.skills,
-								classes: $scope.classes
+								classes: $scope.classes,
+								sid: new_user.sid
 							}
 
 						},

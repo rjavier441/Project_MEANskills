@@ -438,7 +438,13 @@ handle_map.skillMatchHandler = function (request, response) {
 
 	try {
 		var searchCriteria = (hasBody) ? numerify(delintRequestBody(request.body)) : {};
+		if (typeof searchCriteria.classes === "undefined") {
+			searchCriteria.classes = []
+		}
 
+		if (typeof searchCriteria.skills === "undefined") {
+			searchCriteria.skills = []
+		}
 		// Log request
 		logger.log(`Client @ ip ${request.ip} is requesting to find users skilled in any of ${typeof searchCriteria} ${(typeof searchCriteria === "object") ? JSON.stringify(searchCriteria) : searchCriteria} from the database`, handlerTag);
 
