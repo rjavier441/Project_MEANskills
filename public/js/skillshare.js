@@ -33,7 +33,7 @@ function My2ndController($scope) {
     //console.log(array);
 
     app.controller("My2ndController", function($scope, $http) {
-        $http.post("/test/skillmatch").then(function(request) {
+        $http.post("/skillmatch").then(function(request) {
             $scope.skills = [];
             $scope.classes = [];
             }, function(response) {
@@ -52,8 +52,9 @@ function My2ndController($scope) {
  
 function My3rdController($scope) { 
     //the ng-controller for this is hooked up to the div of the results section. 
+       
     app.controller("My3rdController", function($scope, $http) {
-        $http.get("/test/skillmatch").then(function(response) {    
+        $http.post("/skillmatch").then(function(request) {    
             $scope.first_name = response.data;
             $scope.last_name = response.data;
             $scope.username = response.data;    
