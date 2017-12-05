@@ -74,6 +74,9 @@ mongo.connect("mongodb://localhost:27017/testdb", function (err, db) {
 			}
 			if (!login_collection_present) {
 				database.createCollection('login');
+			} else {
+				//clear login collection if already exists. This is very hacky and should be fixed later.
+				database.collection("login").removeMany()
 			}
 		})
 
@@ -158,7 +161,7 @@ handle_map.loginHandler = function (request, response) {			// POST request: REST
 	response.set("Content-Type", "text/javascript");
 
 	var user = {
-		name: request.body.name,
+		name: request.body.username,
 		password: request.body.password
 	}
 	
@@ -177,7 +180,7 @@ handle_map.loginHandler = function (request, response) {			// POST request: REST
 		var login_successful = false
 		if (list.length != 0) {
 			for (var i=0; i<list.length; i++) {
-				if (list[i].name == user.name) {
+				if (list[i].name == user.username) {
 					login_successful = true
 				}
 			}	
@@ -185,10 +188,19 @@ handle_map.loginHandler = function (request, response) {			// POST request: REST
 
 		var login_result = login_successful ? "success" : "failure"
 		var html_code = login_successful ? 200 : 500
-		response.status(200).send(JSON.stringify({result: login_result})).end()
+
+		if (login_result == "success") {
+			insertDoc("login", {username: user.name}, function (error, result) {
+				if (error != null) {
+					logger.log("Adding user to login collection success");
+				} else {
+					logger.log("Login collection addition succesful.");
+				}
+			});
+		}
+
+		response.status(200).send(JSON.stringify({result: login_result})).end()		
 	})
-
-
 };
 
 /*
@@ -452,6 +464,23 @@ handle_map.skillMatchHandler = function (request, response) {
 		});
 	}
 }
+
+/*
+	@function 	getUsernameHandler
+	@returns 	To Client: If successful, returns a success status (200) and the user's name. Otherwise, returns a server error status (500) and populates the response header with the error's details
+*/
+handle_map.getUsernameHandler = function (request, response) {
+	var handlerTag = {"src": "getUsernameHandler"};
+	findDocs('login', {}, function(error, list) {
+		if (!error) { 
+			response.status(200).send((JSON.stringify(list[0]))).end()
+		}
+	})
+	
+	// response.status(200).send(JSON.stringify({name: username}))
+}
+
+
 // END Handler Functions
 
 
@@ -469,7 +498,6 @@ handle_map.skillMatchHandler = function (request, response) {
 */
 function insertDoc (collection, doc, callback) {
 	var handlerTag = {"src": "insertDoc"};
-	console.log('hey! ' + JSON.stringify(doc))
 	// Check if database collection exists
 	database.collection(collection, {strict: true}, function (error, result) {
 		if (error != null) {
