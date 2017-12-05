@@ -1,5 +1,5 @@
-var app = angular.module('skillshare', []).controller('MyController', MyController)
-                                .controller('My2ndController', My2ndController);
+var app = angular.module('skillshare', []).controller("MyController", MyController)
+                                .controller("My2ndController", My2ndController);
                                 //.controller('My3rdController', My3rdController);
                             
 
@@ -32,8 +32,8 @@ function My2ndController($scope) {
 
     //console.log(array);
 
-    app.controller('My2ndController', function($scope, $http) {
-        $http.post("/test/skillmatch").then(function(response) {
+    app.controller("My2ndController", function($scope, $http) {
+        $http.post("/test/skillmatch").then(function(request) {
             $scope.skills = [];
             $scope.classes = [];
             }, function(response) {
@@ -44,7 +44,7 @@ function My2ndController($scope) {
        
     $("#myUL").click(function(){    
      
-        alert("Clicked!");
+        alert("Clicked!");      
  
     })
 
@@ -52,10 +52,17 @@ function My2ndController($scope) {
  
 function My3rdController($scope) { 
     //the ng-controller for this is hooked up to the div of the results section. 
-    app.controller('My3rdController', function($scope, $http) {
-        $http.post("/test/skillmatch").then(function(response) {
+    app.controller("My3rdController", function($scope, $http) {
+        $http.get("/test/skillmatch").then(function(response) {    
+            $scope.first_name = response.data;
+            $scope.last_name = response.data;
+            $scope.username = response.data;    
             $scope.skills = response.data;
             $scope.classes = response.data;
+            $scope.major = response.data;
+            //Match score is missing;
+            $scope.grad = response.data;
+            
             }, function(response) {
            //Second function handles error
                 $scope.skills = "Something went wrong";
