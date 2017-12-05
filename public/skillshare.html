@@ -18,7 +18,7 @@
     
     
     <div id="profile" ng-controller="MyController"> 
-        <h2 id="name">Profile</h2>
+        <h2 id="name" id="username">Profile</h2>
         
         <h4> Hello, {{name}}! </h4>
         <h4> Username: {{username}} </h4>
@@ -39,7 +39,7 @@
         <h2 id="skillsharetitle">SkillShare Search</h2>
         <input id = "myInput" type="text"  oninput="w3.filterHTML('#myUL', 'li', this.value)" placeholder="Search for skills or courses...">   
             <ul id="myUL">
-                <li id="skill"> <a href="#">EE97/EE98</a> </li>
+                <li id="skill"> <a href="#">EE97/EE98</a> </li> 
                 <li id="skill"> <a href="#">CMPE30</a> </li>
                 <li id="skill"> <a href="#">CMPE50</a> </li>
                 <li id="skill"> <a href="#">CMPE102</a> </li>
@@ -69,7 +69,7 @@
                 <li id="skill"> <a href="#">Perl</a> </li> 
                 <li id="skill"> <a href="#">PHP</a> </li> 
                 <li id="skill"> <a href="#">Computer Networking</a> </li> 
-        </ul>
+            </ul>
     </div>
         <!--
         <ul>
@@ -79,10 +79,79 @@
         </ul>
         The search doesn't work yet...-->
         
-    <div id="searchresults">
+    <div id="searchresults" ng-controller = "My3rdController">
         <h2 id="skillsharetitle">Results</h2>
-        
-            <p type="text" id = "wow"></p>  
+        <input id = "myinput" type="tex"  oninput="w3.filterHTML('#myul', 'p', this.value)" placeholder="Search for results...">
+        <div id="resultsdisplay"> 
+
+            <ul id="myul">
+                <li>    
+                    <p>Name:</p>
+                    <p>Match Score:</p>   
+                    <p>Major:</p>
+                    <p>Graduation:</p>     
+                    <p>Skills:</p>
+                    <p>Classes:</p>
+                </li>
+                <li>    
+                    <p>Name:</p>
+                    <p>Match Score:</p>        
+                    <p>Major:</p>
+                    <p>Graduation:</p>     
+                    <p>Skills:</p>
+                    <p>Classes:</p>
+                </li>
+                <li>    
+                    <p>Name:</p>
+                    <p>Match Score:</p>        
+                    <p>Major:</p>
+                    <p>Graduation:</p>     
+                    <p>Skills:</p>
+                    <p>Classes:</p>
+                </li>
+                <li>    
+                    <p>Name:</p>
+                    <p>Match Score:</p>       
+                    <p>Major:</p>
+                    <p>Graduation:</p>     
+                    <p>Skills:</p>
+                    <p>Classes:</p>
+                </li>
+                <li>    
+                    <p>Name:</p>
+                    <p>Match Score:</p>       
+                    <p>Major:</p>
+                    <p>Graduation:</p>     
+                    <p>Skills:</p>
+                    <p>Classes:</p>
+                </li>
+                <li>    
+                    <p>Name:</p>
+                    <p>Match Score:</p>       
+                    <p>Major:</p>
+                    <p>Graduation:</p>     
+                    <p>Skills:</p>
+                    <p>Classes:</p>
+                </li>
+                <li>    
+                    <p>Name:</p>
+                    <p>Match Score:</p>       
+                    <p>Major:</p>
+                    <p>Graduation:</p>     
+                    <p>Skills:</p>
+                    <p>Classes:</p>
+                </li>
+                <li>    
+                    <p>Name:</p>
+                    <p>Match Score:</p>       
+                    <p>Major:</p>
+                    <p>Graduation:</p>     
+                    <p>Skills:</p>
+                    <p>Classes:</p>
+                </li>
+            </ul>
+
+        </div>
 
     </div>
     

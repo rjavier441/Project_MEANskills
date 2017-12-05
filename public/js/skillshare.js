@@ -1,13 +1,25 @@
-angular.module('skillshare', []).controller('MyController', MyController);
+angular.module('skillshare', []).controller('MyController', MyController)
+                                .controller('My2ndController', My2ndController);
+                                //.controller('My3rdController', My3rdController);
+                            
+
   //= {{MyController.name}}
     //    {{MyController.username}}
         
 function MyController($scope) {
   
-    $scope.name = "Pranav";
-    $scope.username = "";
+    $scope.name = "Pranav"; // Make this equal to whatever you want to display as the name of the person.
+    $scope.username = "Username"; // Make this equal to whatever you want to display as the username of the person.
 }
-      
+
+function My2ndController($scope) {
+
+}
+ 
+function My3rdController($scope) {
+
+}   
+
 if(typeof jQuery == "undefined"){
     
     alert("Contact Pranav!");
@@ -18,7 +30,20 @@ else{
     alert("Welcome to SkillShare!");    
     
 }
+
+
+
+
+
+
+
+
+
 /*
+document.getElementById("skill").onclick = function() {
+    alert("Clicked!");
+}   
+
 document.getElementById("skill").onclick function(){
 
     var a = document.getElementsByTagName("li");
