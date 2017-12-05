@@ -1,3 +1,4 @@
+
 (function() {
 	angular.module('app', []).controller("home_page", function($scope) {
 		$scope.name = "user"
@@ -28,3 +29,4 @@
 		})
 	})
 })()
+
