@@ -4,10 +4,7 @@
 		$scope.name = "user"
 	 	$scope.possible_skills = ['Javascript', 'Java', 'C++', 'Python', 'Git', 'Agile Development', 'React', 'Angular', 'Node', 'Shell Scripting', 'Computer Vision', 'Ruby', 'Perl', 'PHP', 'Computer Networking']
 		$scope.desired_skills = []
-<<<<<<< HEAD
 		$scope.matched_users = []
-=======
->>>>>>> master
 
 		$scope.toggleButton = function(event) {
 			$(event.target).toggleClass('active')
@@ -19,10 +16,7 @@
 				$scope.desired_skills.push(skill)
 			}
 		}
-<<<<<<< HEAD
 
-=======
->>>>>>> master
 		$.ajax({
 			url: "/getUsername",
 			method: "GET",
@@ -32,7 +26,6 @@
 				$scope.$apply()
 			},
 			error: function(err) { 
-<<<<<<< HEAD
 				console.log(err.responseText)
 			}
 		})
@@ -58,11 +51,7 @@
 			})
 
 		}
-=======
-				console.log("Error!")
-			}
-		})
->>>>>>> master
+
 	})
 })()
 

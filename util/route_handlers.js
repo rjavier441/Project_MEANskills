@@ -1247,6 +1247,7 @@ var heapSorter = (function() {
 		heapSort: heapSort
 	};
 })();
+
 // END Utility Methods
 
 /*
@@ -1296,59 +1297,6 @@ var heapSorter = (function() {
 // 	})
 // }
 
-// END Utility Methods
 
-<<<<<<< HEAD
-/*
-	@function 	testRuntime()
-	@parameter 	users_needed: number of users in database.
-	@returns 	nothing
-	@details 	This function tests the runtime of MongoDB's searching for multiple collection sizes.
-*/
-// function testRuntime(users_needed) {
-// 	//create array which initializes with only ariskoumis
-// 	var user_array = [{username: "ariskoumis"}]
-
-// 	//populate user_array 
-// 	var users_created = 0
-// 	while (users_created < users_needed) {
-// 		var temp_user = {
-// 			username: Math.random().toString(36).substr(2, 7)
-// 		}
-// 		user_array.push(temp_user)
-// 		users_created++
-// 	}
-
-// 	// Check if database collection exists
-// 	database.collection("users", {strict: true}, function (error, result) {
-// 		if (error != null) {
-// 			console.log(error)
-// 		} else {
-// 			result.remove({})
-// 			// Else, no error occurred, and the database collection was found; use it to write to the database
-// 			result.insertMany(user_array).then(function (promiseResult) {
-// 				console.log("Insertion successful")
-// 			});
-// 		}
-// 	});
-
-// 	//Find User Aris Koumis
-// 	console.time('searchForAris')
-// 	searchForAris()
-// 	console.timeEnd('searchForAris')
-// }
-
-// searchForAris = async function() {
-// 	await findDocs("users", {username: "ariskoumis"}, function(error, list) {
-// 		if (error != null) {
-// 			console.log(error)
-// 		}
-// 	})
-// }
-
-// END Utility Methods
-
-=======
->>>>>>> master
 module.exports = handle_map;
 // END route_handlers.js 
